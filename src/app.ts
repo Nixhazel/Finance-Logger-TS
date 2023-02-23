@@ -1,5 +1,9 @@
 import { Invoice } from "./classes/invoice.js";
+import { Payment } from "./classes/payment.js";
+import { HasFormater } from "./interfaces/HasFormater.js";
 
+let docOne: HasFormater;
+let docTwo: HasFormater
 interface IsPerson {
     name: string;
     age: number;

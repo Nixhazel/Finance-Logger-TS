@@ -1,4 +1,6 @@
 import { Invoice } from "./classes/invoice.js";
+let docOne;
+let docTwo;
 const invOne = new Invoice('mario', 'work on the mario website', 250);
 const invTwo = new Invoice('lulu', 'work on the lulu website', 250);
 let invoice = [];
