@@ -1,29 +1,8 @@
 import { Invoice } from "./classes/invoice.js";
 import { Payment } from "./classes/payment.js";
 import { HasFormater } from "./interfaces/HasFormater.js";
+import { ListTemplate } from './classes/listTemplate';
 
-let docOne: HasFormater;
-let docTwo: HasFormater
-interface IsPerson {
-    name: string;
-    age: number;
-    speak(a: string): void;
-    spend(a: number): number;
-}
-
-
-
-const invOne = new Invoice('mario', 'work on the mario website', 250)
-const invTwo = new Invoice('lulu', 'work on the lulu website', 250)
-
-let invoice: Invoice[] = [];
-invoice.push(invOne);
-invoice.push(invTwo);
-
-
-invoice.forEach(inv => {
-    console.log(inv.client, inv.amount,inv.format());
-})
 
 const form = document.querySelector('.new-item-form') as HTMLFormElement;
 // console.log(form.children);
@@ -34,8 +13,19 @@ const details = document.querySelector('#details') as HTMLInputElement;
 const amount = document.querySelector('#amount') as HTMLInputElement;
 
 
+// list template instance
+const ul = document.querySelector('ul')!;
+const list = new ListTemplate(ul);
+
 form.addEventListener('submit', (e: Event) => {
     e.preventDefault();
 
-    console.log(type.value, tofrom.value, details.value, amount.valueAsNumber);
+    let doc: HasFormater;
+    if (type.value === 'invoice') {
+        doc = new Invoice(tofrom.value, details.value, amount.valueAsNumber);
+    } else {
+        doc = new Payment(tofrom.value, details.value, amount.valueAsNumber);
+    }
+
+    console.log(doc);
 });

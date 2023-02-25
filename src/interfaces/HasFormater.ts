@@ -1,3 +1,3 @@
 export interface HasFormater {
-    format(): String
+    format(): string
 }
